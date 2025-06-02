@@ -1,8 +1,10 @@
+import os
 import ssl
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-#from newsplease import NewsPlease
+import uvicorn
+from newsplease import NewsPlease
 
 #SSL Checker
 try:
@@ -54,4 +56,6 @@ def main(item: NewsUrl):
                 'content'       : 'ERROR'
                 }
     
-    
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 10000))  # Render sets this automatically
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
