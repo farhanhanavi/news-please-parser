@@ -37,7 +37,7 @@ Pydantic Basemodel for API Preparation
 class NewsUrl(BaseModel):
     url_input : str
 
-@app.get("/")
+@app.post("/")
 def main(item: NewsUrl):
 
     try:
